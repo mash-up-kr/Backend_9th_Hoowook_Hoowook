@@ -7,6 +7,9 @@ build/
 
 kancho-byeolbyeol.json
 
+### properties ###
+*.properties
+
 ### STS ###
 .apt_generated
 .classpath
