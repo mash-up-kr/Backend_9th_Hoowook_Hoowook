@@ -1,14 +1,14 @@
-package mashup.backend.hoowook_hoowwok.document.domain;
+package mashup.backend.hoowook_hoowwok.document.domain.document;
 
 import lombok.*;
 import mashup.backend.hoowook_hoowwok.common.BaseTimeEntity;
-import mashup.backend.hoowook_hoowwok.user.domain.User;
+import mashup.backend.hoowook_hoowwok.document.domain.State;
 
 import javax.persistence.*;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@NoArgsConstructor
 public class Document extends BaseTimeEntity {
     @Id
     @Column(name="doc_id")
@@ -21,16 +21,14 @@ public class Document extends BaseTimeEntity {
     @Column(length=100)
     private String title;
 
-    @Column(length=6)
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private State state;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable = false)
-    private User user;
+    private Long userId;
 
     @Builder
-    public Document(User user, String content, String title, String state){
-        this.user = user;
+    private Document(Long userId, String content, String title, State state){
+        this.userId = userId;
         this.content = content;
         this.title = title;
         this.state = state;

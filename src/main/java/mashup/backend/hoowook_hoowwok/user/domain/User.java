@@ -1,5 +1,6 @@
 package mashup.backend.hoowook_hoowwok.user.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,8 +9,8 @@ import mashup.backend.hoowook_hoowwok.common.BaseTimeEntity;
 import javax.persistence.*;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@NoArgsConstructor
 public class User extends BaseTimeEntity {
 
     @Id
@@ -30,7 +31,7 @@ public class User extends BaseTimeEntity {
     private String rank;
 
     @Builder
-    public User(RoleType roleType, String password, String name, String rank) {
+    private User(RoleType roleType, String password, String name, String rank) {
         this.roleType = roleType;
         this.password = password;
         this.name = name;
