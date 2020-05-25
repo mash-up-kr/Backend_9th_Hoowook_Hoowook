@@ -23,6 +23,9 @@ public class Approval extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private State state;
 
+    @Column(columnDefinition = "TEXT")
+    private String comment;
+
     @Builder
     private Approval(ApprovalId approvalId, Integer ordering, State state){
         this.approvalId = approvalId;

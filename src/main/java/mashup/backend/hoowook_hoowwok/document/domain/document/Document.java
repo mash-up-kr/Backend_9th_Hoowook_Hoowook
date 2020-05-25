@@ -15,7 +15,7 @@ public class Document extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long docId;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Lob
     private String content;
 
     @Column(length=100)
